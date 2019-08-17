@@ -1,0 +1,18 @@
+<!-- <select (change)="onDaySelect($event)">
+  <option disabled selected>Select a day...</option>
+  <option value="Select all">Select all</option>
+  <option *ngFor="let bgDay of bgDays">{{bgDay}}</option>
+</select> -->
+<select [(ngModel)]="selectedDay">
+  <option disabled selected value="">Select a day...</option>
+  <option value="Select all">Select all</option>
+  <option *ngFor="let bgDay of bgDays">{{bgDay}}</option>
+</select>
+<div style="display: block">
+  <canvas baseChart height="100"
+    [labels]="lineChartLabels | filterChartLabels: bgReadings:selectedDay"
+    [datasets]="lineChartData | filterChartData: bgReadings:selectedDay"
+    [options]="lineChartOptions"
+    chartType="line">
+  </canvas>
+</div>
